@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "name": "Pratik",
+      "avtaar": "https://cdn.pixabay.com/photo/2016/10/26/19/00/domain-names-1772242__480.jpg",
+      "rollNo": "7",
+      "course": "MERN",
+      "id": 6
+    },
+    {
+      "name": "Vaibhav Jagdevrao Sultane",
+      "avtaar": "https://cdn.pixabay.com/photo/2016/10/26/19/00/domain-names-1772242__480.jpg",
+      "rollNo": "12",
+      "course": "JAVA",
+      "id": 7
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 100%;
+            border: 1px solid red;
+            height: 200vh;
+            display: flex;
+            justify-content: space-around;
+        }
+        #container>div{
+            border: 1px solid green;
+            height: 260px;
+            width: 22%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        img{
+            width: 100px;
+        }
+    </style>
+    
+</head>
+<body>
+    <h2>CRUD Application</h3>
+    <div id="container">
+       
+    </div>
+</body>
+</html>
+<script>
+    let container=document.getElementById("container")
+    // Get
+   async function getData(){
+       try {
+        let resp= await fetch("http://localhost:3000/posts")
+        let data= await resp.json()
+        // console.log(data)
+        return data
+       } catch (error) {
+        console.log(error)
+       }
+    }
+
+    function cardData(data){
+        return `
+        <div>
+            <h2>Name:${data.name}</h2>
+            <img src=${data.avtaar} alt="">
+            <p>Roll No:${data.rollNo}</p>
+            <h3>Course:${data.course}</h3>
+            <button id="deleteBtn" onclick="deleteData(${data.id})">Delete</button>
+       </div>`
+    }
+
+   async function CallFunction(){
+        let data=await getData()
+        console.log(data)
+        container.innerHTML=data.map((item)=>{
+          return cardData(item)
+        }).join(" ")
+
+    }
+
+CallFunction()
+
+ async function deleteData(deleteId){
+     let resp=await fetch(`http://localhost:3000/posts/${deleteId}`,{
+            method:"DELETE"
+      })
+    //   location.reload()
+  }
+
+  function updateData(){
+        
+  }
+ 
+</script>
